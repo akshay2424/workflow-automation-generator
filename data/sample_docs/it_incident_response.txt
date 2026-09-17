@@ -1,0 +1,29 @@
+SOP: IT Incident Response
+Department: Site Reliability Engineering
+
+1. An alert fires from the monitoring system, or an employee reports an
+   issue through the helpdesk.
+2. The on-call engineer acknowledges the alert and checks the severity
+   level.
+3. If the severity is Low, the engineer logs the issue as a ticket for
+   the next business day and no further action is taken tonight.
+4. If the severity is Medium or High, the engineer begins investigating
+   immediately and posts a status update in the incident channel.
+5. The engineer checks whether the issue can be resolved by restarting
+   the affected service.
+   - If a restart resolves it, the engineer confirms the service is
+     healthy, updates the incident channel, and closes the incident.
+   - If a restart does not resolve it, the engineer escalates to the
+     service owner team.
+6. The service owner team investigates the root cause.
+7. If the root cause requires a code fix, the team opens an emergency
+   deployment request, which must be approved by the Engineering Manager
+   before it can be deployed.
+8. If the Engineering Manager rejects the emergency deployment, the team
+   applies a temporary mitigation instead (e.g. feature flag disable,
+   traffic rerouting) and schedules the real fix for the next sprint.
+9. Once the fix or mitigation is deployed and verified, the incident is
+   marked resolved.
+10. Within 48 hours of resolution, the on-call engineer writes a
+    post-incident report summarizing the timeline, root cause, and
+    follow-up actions, and shares it with the wider engineering team.

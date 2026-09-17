@@ -1,0 +1,25 @@
+Ticket #4821 - New Employee IT Onboarding Request
+Requested by: hr-team@company.com
+Employee: EMP-10234, contact: new.hire@company.com, phone 555-201-9988
+
+Description:
+HR has submitted a new hire request. IT needs to complete the following
+before the employee's start date:
+
+1. HR submits the onboarding ticket with employee details and start date.
+2. IT Helpdesk reviews the ticket and checks if a laptop is available in
+   inventory.
+3. If a laptop is available, IT assigns it and proceeds to account
+   provisioning.
+4. If no laptop is available, IT places a procurement order and the ticket
+   is put on hold until the laptop arrives, then proceeds to account
+   provisioning.
+5. IT provisions email and SSO accounts for the employee.
+6. IT Security reviews the account provisioning request and grants access
+   based on the employee's department and role.
+7. If IT Security flags the request (e.g. role requires elevated access),
+   it is escalated to the Security Lead for manual approval.
+8. Once access is granted, IT ships or hands off the laptop to the employee
+   and marks the ticket as ready for the employee's first day.
+9. On the employee's first day, IT confirms login success and closes the
+   ticket.

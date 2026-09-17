@@ -1,0 +1,20 @@
+Policy: Employee Expense Approval
+Effective for all expense claims submitted through the company expense system.
+
+1. Employee submits an expense claim with receipts attached.
+2. The system automatically checks whether receipts are attached for all
+   line items over $25.
+3. If receipts are missing for required line items, the claim is returned
+   to the employee for correction.
+4. If receipts are complete, the claim proceeds to the employee's direct
+   manager for review.
+5. The manager checks the total claim amount.
+   - If the total is under $1,000, the manager can approve it directly.
+   - If the total is $1,000 or more, the claim must also be approved by the
+     Department Head.
+6. If the Department Head rejects the claim, the employee is notified with
+   the rejection reason and the claim is closed.
+7. If approved (by manager alone, or manager plus Department Head), the
+   claim moves to Payroll for reimbursement processing.
+8. Payroll processes the reimbursement in the next pay cycle and the
+   employee is notified that reimbursement is complete.

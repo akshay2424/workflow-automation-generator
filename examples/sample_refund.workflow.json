@@ -1,0 +1,27 @@
+{
+  "doc_id": "sop_refund_process.txt",
+  "states": {
+    "submit_request": {"description": "Customer submits refund request", "actor": "Customer", "condition": null, "type": "start"},
+    "verify_order": {"description": "Agent verifies order exists", "actor": "Support Agent", "condition": null, "type": "task"},
+    "reject_invalid": {"description": "Reject: order not found", "actor": "Support Agent", "condition": "order not found", "type": "end"},
+    "check_amount": {"description": "Agent checks refund amount", "actor": "Support Agent", "condition": null, "type": "task"},
+    "agent_approve": {"description": "Agent approves directly", "actor": "Support Agent", "condition": "amount < 500", "type": "task"},
+    "escalate_manager": {"description": "Escalate to Finance Manager", "actor": "Finance Manager", "condition": "amount >= 500", "type": "task"},
+    "manager_reject": {"description": "Manager rejects request", "actor": "Finance Manager", "condition": "manager denies", "type": "end"},
+    "process_payment": {"description": "Accounts Payable processes refund", "actor": "Accounts Payable", "condition": null, "type": "task"},
+    "confirm_customer": {"description": "Send confirmation email, close ticket", "actor": "System", "condition": null, "type": "end"}
+  },
+  "transitions": [
+    {"from": "submit_request", "to": "verify_order", "guard": null},
+    {"from": "verify_order", "to": "reject_invalid", "guard": "order not found"},
+    {"from": "verify_order", "to": "check_amount", "guard": "order found"},
+    {"from": "check_amount", "to": "agent_approve", "guard": "amount < 500"},
+    {"from": "check_amount", "to": "escalate_manager", "guard": "amount >= 500"},
+    {"from": "escalate_manager", "to": "manager_reject", "guard": "manager denies"},
+    {"from": "escalate_manager", "to": "process_payment", "guard": "manager approves"},
+    {"from": "agent_approve", "to": "process_payment", "guard": null},
+    {"from": "process_payment", "to": "confirm_customer", "guard": null}
+  ],
+  "start_state": "submit_request",
+  "end_states": ["reject_invalid", "manager_reject", "confirm_customer"]
+}
